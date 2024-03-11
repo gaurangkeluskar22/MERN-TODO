@@ -1,7 +1,15 @@
 const jwt = require('jsonwebtoken')
+const { loginUserService } = require('../User/user.service')
 
 const jwtAuthMiddleware = (req, res, next) => {
     // extract token from request
+    if(!req.headers.authorization){
+        res.status(401).json({
+            success : false,
+            message : "Unauthorized!"
+        })
+    }
+
     const token = req.headers.authorization.split(' ')[1]
     if(!token){
         res.status(401).json({

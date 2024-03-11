@@ -1,0 +1,25 @@
+.card-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    text-align: center;
+    background: #cde;
+    border-radius: 10px;
+    /* min-height: 200px; */
+}
+
+.card-details p {
+    margin: 5px;
+}
+
+.card-details-writter{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 200px;   
+}

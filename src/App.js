@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import CreateTodo from './pages/CreateTodo';
+import CreateThoughts from './pages/CreateThoughts/CreateThoughts';
 import SignUp from './pages/Signup/SignUp';
 import LoginPage from './pages/login/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
+import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Route path='/' element={<SignUp/>}/>
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/home' element={<HomePage/>}/>
-      <Route path='/Create' element={<CreateTodo/>}/>
+      <Route path='/create' element={<CreateThoughts/>}/>
       </Routes>
     </Router>
     </div>
