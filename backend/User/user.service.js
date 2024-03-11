@@ -20,6 +20,22 @@ const createUserService = (data, callBack) => {
     );
 }
 
+const loginUserService = (data, callBack) => {
+    pool.query(`select * from User where email_id = ?`,
+    [
+        data?.email_id
+    ],
+    (error, results)=>{
+        if(error){
+            return callBack(error)
+        }
+        else{
+            return callBack(null, results[0])
+        }
+    }
+    )
+}
+
 const getUserListService = (callBack) => {
     pool.query(
         `select * from User`,
@@ -38,5 +54,6 @@ const getUserListService = (callBack) => {
 
 module.exports = {
     createUserService,
+    loginUserService,
     getUserListService
 }

@@ -25,7 +25,6 @@ const CreateTodo = () =>{
         setTodo(input)
     }
 
-    console.log("t:",todoList)
     return(
         <Box sx={{marginTop:'10vh', width:'21vw'}}>
             <Box sx={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>   

@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import getRequestedHeader from "../../utils/util";
-
-
 
 
 const SignUp = () => {
@@ -13,6 +11,12 @@ const SignUp = () => {
     const [email, setEmail] = useState('')
     const [lastName, setLastName] = useState('')
     const headers = getRequestedHeader()
+
+    useEffect(()=>{
+        if(localStorage?.getItem("token")){
+            navigate("/home")
+        }
+    },[])
 
     const handleLoginButton = () => {
         navigate('/login')
@@ -38,7 +42,7 @@ const SignUp = () => {
         setPassword(value)
     }
     
-    const handleSignUp = () => {
+    const handleSignUp = async () => {
         const payload = {
             "firstname" : name,
             "lastname" : lastName,
@@ -46,11 +50,15 @@ const SignUp = () => {
             "password_hash" : password,
         }
 
-        axios.post('http://localhost:3001/api/user/create', payload , headers).then((res)=>{
+        await axios.post('http://localhost:3001/api/user/create', payload , headers).then((res)=>{
             if(res?.data?.success){
                 if(res?.data?.token){
                     localStorage.setItem("token",res?.data?.token)
+                    navigate('/home')
                 }
+            }
+            else{
+                alert(res?.data?.message)
             }
         }).catch((err)=>{
             console.log(err)
