@@ -2,9 +2,11 @@ import axios from 'axios';
 import './CardData.css';
 import { useState } from 'react';
 import getRequestedHeader from '../../utils/util';
+import { useNavigate } from 'react-router-dom';
 
-const CardData = ({data}) => {
+const CardData = ({data, isMyThought, setIsDeleted}) => {
     const headers = getRequestedHeader()
+    const navigate = useNavigate()
     const [like, setLike] = useState('🖤')
     const [likeCount, setLikeCount] = useState(data?.likes)
 
@@ -16,6 +18,24 @@ const CardData = ({data}) => {
             }
         }).catch((err)=>{
             console.log(err)
+        })
+    }
+
+    const handleDelete = async (id) => {
+        await axios.delete(`http://localhost:3001/api/thought/delete/${id}`,headers).then((res)=>{
+            if(res?.data?.success){
+                setIsDeleted(true)
+            }
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    const handleUpdate = () => {
+        navigate('/create', {
+            state:{
+                data: data,
+            }
         })
     }
 
@@ -36,6 +56,12 @@ const CardData = ({data}) => {
                     <p>{data?.firstname +" "+ data?.lastname}</p>
                 </div>
             </div>
+            {isMyThought &&
+                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'200px'}}>
+                    <button style={{padding:'5px', margin:'0px',width:'90px', background:'#cdf'}} onClick={handleUpdate}>Update</button>
+                    <button style={{padding:'5px', margin:'0px',width:'90px', background:'#cdf'}} onClick={() => handleDelete(data?.id)}>Delete</button>
+                </div>
+            }
         </div>
     )
 }

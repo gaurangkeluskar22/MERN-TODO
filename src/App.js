@@ -6,6 +6,7 @@ import SignUp from './pages/Signup/SignUp';
 import LoginPage from './pages/login/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './Components/NavBar/NavBar';
+import MyThought from './pages/MyThoughts/MyThought';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/home' element={<HomePage/>}/>
       <Route path='/create' element={<CreateThoughts/>}/>
+      <Route path='/myThoughts' element={<MyThought/>}/>
       </Routes>
     </Router>
     </div>

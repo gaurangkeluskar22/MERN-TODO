@@ -58,8 +58,6 @@ const loginUser = (req, res) => {
 const getUserList = (req,res) => {
     getUserListService((err, results)=>{
         if(err){
-            console.log("e:",err)
-
             return res.status(500).json({
                 success : false,
                 message : "Error"
