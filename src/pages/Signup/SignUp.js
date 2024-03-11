@@ -50,7 +50,7 @@ const SignUp = () => {
             "password_hash" : password,
         }
 
-        await axios.post('http://localhost:3001/api/user/create', payload , headers).then((res)=>{
+        await axios.post('https://sern-thoughts-app.onrender.com/api/user/create', payload , headers).then((res)=>{
             if(res?.data?.success){
                 if(res?.data?.token){
                     localStorage.setItem("token",res?.data?.token)

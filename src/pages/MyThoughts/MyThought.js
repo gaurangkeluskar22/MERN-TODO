@@ -14,7 +14,7 @@ const MyThought = () => {
     const [isDeleted, setIsDeleted] = useState(false)
  
     const fetchData = async () => {
-        await axios.get('http://localhost:3001/api/thought/getMyThoughts',headers).then((res)=> {
+        await axios.get('https://sern-thoughts-app.onrender.com/api/thought/getMyThoughts',headers).then((res)=> {
             if(res?.data?.success){
                 setThoughts(res?.data?.data)
             }

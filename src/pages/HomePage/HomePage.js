@@ -13,7 +13,7 @@ const HomePage = () => {
     const [thoughts, setThoughts] = useState([])
 
     const fetchData = async () => {
-        await axios.get('http://localhost:3001/api/thought/getThoughts', headers).then((res)=>{
+        await axios.get('https://sern-thoughts-app.onrender.com/api/thought/getThoughts', headers).then((res)=>{
             if(res?.data?.success){
                 setThoughts(res?.data?.data)
             }

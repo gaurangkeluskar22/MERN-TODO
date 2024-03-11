@@ -2,7 +2,7 @@ const pool = require('../config/database');
 
 const createUserService = (data, callBack) => {
     pool.query(
-        `insert into User (firstname, lastname, email_id, password_hash) values (?,?,?,?)`,
+        `insert into user (firstname, lastname, email_id, password_hash) values (?,?,?,?)`,
         [
             data.firstname,
             data.lastname,
@@ -21,7 +21,7 @@ const createUserService = (data, callBack) => {
 }
 
 const loginUserService = (data, callBack) => {
-    pool.query(`select * from User where email_id = ?`,
+    pool.query(`select * from user where email_id = ?`,
     [
         data?.email_id
     ],
@@ -38,7 +38,7 @@ const loginUserService = (data, callBack) => {
 
 const getUserListService = (callBack) => {
     pool.query(
-        `select * from User`,
+        `select * from user`,
         [],
         (error, results) => {
             if(error){

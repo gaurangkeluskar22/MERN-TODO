@@ -11,7 +11,7 @@ const CardData = ({data, isMyThought, setIsDeleted}) => {
     const [likeCount, setLikeCount] = useState(data?.likes)
 
     const handleLike = async() => {
-        await axios.post(`http://localhost:3001/api/thought/like/${data?.id}`,{},headers).then((res)=>{
+        await axios.post(`https://sern-thoughts-app.onrender.com/api/thought/like/${data?.id}`,{},headers).then((res)=>{
             if(res?.data?.success){
                 setLike('❤️')
                 setLikeCount((prevState)=> prevState + 1)
@@ -22,7 +22,7 @@ const CardData = ({data, isMyThought, setIsDeleted}) => {
     }
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:3001/api/thought/delete/${id}`,headers).then((res)=>{
+        await axios.delete(`https://sern-thoughts-app.onrender.com/api/thought/delete/${id}`,headers).then((res)=>{
             if(res?.data?.success){
                 setIsDeleted(true)
             }

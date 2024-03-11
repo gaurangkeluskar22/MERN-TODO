@@ -30,7 +30,7 @@ const CreateThoughts = () =>{
             "thought_desc" : description
         }
 
-        await axios.post('http://localhost:3001/api/thought/create', payload, headers).then((res)=>{
+        await axios.post('https://sern-thoughts-app.onrender.com/api/thought/create', payload, headers).then((res)=>{
             if(res?.data?.success){
               alert(res?.data?.message)
               navigate('/home')
@@ -62,7 +62,7 @@ const CreateThoughts = () =>{
             "id": location?.state?.data?.id,
         }
 
-        await axios.put('http://localhost:3001/api/thought/update', payload, headers).then((res)=>{
+        await axios.put('https://sern-thoughts-app.onrender.com/api/thought/update', payload, headers).then((res)=>{
             if(res?.data?.success){
               alert(res?.data?.message)
               navigate('/home')
